@@ -1,0 +1,8 @@
+# work folder
+/work
+
+# asset folder
+/asset
+
+# VSCodeワークスペース
+*.code-workspace
