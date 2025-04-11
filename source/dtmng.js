@@ -410,8 +410,8 @@
           // 日時管理オブジェクトがある場合
           if(varobj.dtmngs.length != 0){
 
-            // 先頭の日時管理オブジェクトを設定
-            varobj.dtmng = varobj.dtmngs[0];
+            // 末尾の日時管理オブジェクトを設定
+            varobj.dtmng = varobj.dtmngs[varobj.dtmngs.length - 1];
 
           // 日時管理オブジェクトがない場合
           }else{
