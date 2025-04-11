@@ -274,8 +274,8 @@
         tf.jpastDateTime = `${years}年${months}ヶ月${days}日 ${hours}時間${minutes}分${seconds}秒`;
         tf.pastDate = `${years} years, ${months} months, and ${days} days.`;
         tf.jpastDate = `${years}年${months}ヶ月${days}日`;
-        tf.pastTime = `${hours}時間${minutes}分${seconds}秒`;
-        tf.jpastTime = `${hours} hour, ${minutes} minutes, and ${seconds} seconds.`;
+        tf.pastTime = `${hours} hour, ${minutes} minutes, and ${seconds} seconds.`;
+        tf.jpastTime = `${hours}時間${minutes}分${seconds}秒`;
 
       }
 
