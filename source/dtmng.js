@@ -8,7 +8,7 @@
 (() => {
 
   /********************************************************************************
-   * 日時管理設定タグ作成
+   * 日時設定タグ作成
    *
    * @param id ID
    * @param scope 変数格納スコープ
@@ -86,7 +86,7 @@
   TYRANO.kag.ftag.master_tag.dtmng_set.kag = TYRANO.kag;
 
   /********************************************************************************
-   * 日時管理取得タグ作成
+   * 日時取得タグ作成
    *
    * @param id ID
    * @param scope 変数格納スコープ
@@ -375,7 +375,7 @@
   TYRANO.kag.ftag.master_tag.dtmng_diff.kag = TYRANO.kag;
 
   /********************************************************************************
-   * 日時管理削除タグ作成
+   * 日時削除タグ作成
    *
    * @param id ID
    * @param scope 変数格納スコープ
@@ -405,7 +405,7 @@
         if(get_dtmng){
 
           // 日時管理オブジェクト配列更新
-          varobj.dtmngs = [ ...varobj.dtmngs.filter(it => it.id != id), new_dtmng] ;
+          varobj.dtmngs = [ ...varobj.dtmngs.filter(it => it.id != get_dtmng.id)] ;
 
           // 日時管理オブジェクトがある場合
           if(varobj.dtmngs.length != 0){
@@ -440,7 +440,7 @@
   TYRANO.kag.ftag.master_tag.dtmng_del.kag = TYRANO.kag;
 
   /********************************************************************************
-   * 日時管理クリアタグ作成
+   * 日時クリアタグ作成
    *
    * @param dt 日時
    * @since 2025/03/31
@@ -458,21 +458,45 @@
       // 変数格納オブジェクト取得
       const varobj = getVarobj(pm.scope);
 
-      // 日時管理オブジェクトがある場合
-      if(typeof varobj.dtmng !== "undefined"){
+      // 日時管理オブジェクト削除
+      if(typeof varobj.dtmng !== "undefined") delete varobj.dtmng;
+              
+      // 日時管理オブジェクト配列削除
+      if(typeof varobj.dtmngs !== "undefined") delete varobj.dtmngs
   
-        // 日時管理オブジェクト削除
-        delete varobj.dtmng;
+      // 経過日時格納用一時変数の削除
+      if(typeof TYRANO.kag.variable.tf.pastYears !== "undefined") delete TYRANO.kag.variable.tf.pastYears;
+      if(typeof TYRANO.kag.variable.tf.jpastYears !== "undefined") delete TYRANO.kag.variable.tf.jpastYears;
+      if(typeof TYRANO.kag.variable.tf.pastMonths !== "undefined") delete TYRANO.kag.variable.tf.pastMonths;
+      if(typeof TYRANO.kag.variable.tf.jpastMonths !== "undefined") delete TYRANO.kag.variable.tf.jpastMonths;
+      if(typeof TYRANO.kag.variable.tf.pastDays !== "undefined") delete TYRANO.kag.variable.tf.pastDays;
+      if(typeof TYRANO.kag.variable.tf.jpastDays !== "undefined") delete TYRANO.kag.variable.tf.jpastDays;
+      if(typeof TYRANO.kag.variable.tf.pastHours !== "undefined") delete TYRANO.kag.variable.tf.pastHours;
+      if(typeof TYRANO.kag.variable.tf.jpastHours !== "undefined") delete TYRANO.kag.variable.tf.jpastHours;
+      if(typeof TYRANO.kag.variable.tf.pastMinutes !== "undefined") delete TYRANO.kag.variable.tf.pastMinutes;
+      if(typeof TYRANO.kag.variable.tf.jpastMinutes !== "undefined") delete TYRANO.kag.variable.tf.jpastMinutes;
+      if(typeof TYRANO.kag.variable.tf.pastSeconds !== "undefined") delete TYRANO.kag.variable.tf.pastSeconds;
+      if(typeof TYRANO.kag.variable.tf.jpastSeconds !== "undefined") delete TYRANO.kag.variable.tf.jpastSeconds;
+      if(typeof TYRANO.kag.variable.tf.pastDateTime !== "undefined") delete TYRANO.kag.variable.tf.pastDateTime;
+      if(typeof TYRANO.kag.variable.tf.jpastDateTime !== "undefined") delete TYRANO.kag.variable.tf.jpastDateTime;
+      if(typeof TYRANO.kag.variable.tf.pastDate !== "undefined") delete TYRANO.kag.variable.tf.pastDate;
+      if(typeof TYRANO.kag.variable.tf.jpastDate !== "undefined") delete TYRANO.kag.variable.tf.jpastDate;
+      if(typeof TYRANO.kag.variable.tf.pastTime !== "undefined") delete TYRANO.kag.variable.tf.pastTime;
+      if(typeof TYRANO.kag.variable.tf.jpastTime !== "undefined") delete TYRANO.kag.variable.tf.jpastTime;
 
-      }
-            
-      // 日時管理オブジェクト自配列がある場合
-      if(typeof varobj.dtmngs !== "undefined"){
-  
-        // 日時管理オブジェクト配列削除
-        delete varobj.dtmngs
-        
-      }
+      // 差分日時格納用一時変数の削除
+      if(typeof TYRANO.kag.variable.tf.diffYears !== "undefined") delete TYRANO.kag.variable.tf.diffYears;
+      if(typeof TYRANO.kag.variable.tf.jdiffYears !== "undefined") delete TYRANO.kag.variable.tf.jdiffYears;
+      if(typeof TYRANO.kag.variable.tf.diffMonths !== "undefined") delete TYRANO.kag.variable.tf.diffMonths;
+      if(typeof TYRANO.kag.variable.tf.jdiffMonths !== "undefined") delete TYRANO.kag.variable.tf.jdiffMonths;
+      if(typeof TYRANO.kag.variable.tf.diffDays !== "undefined") delete TYRANO.kag.variable.tf.diffDays;
+      if(typeof TYRANO.kag.variable.tf.jdiffDays !== "undefined") delete TYRANO.kag.variable.tf.jdiffDays;
+      if(typeof TYRANO.kag.variable.tf.diffHours !== "undefined") delete TYRANO.kag.variable.tf.diffHours;
+      if(typeof TYRANO.kag.variable.tf.jdiffHours !== "undefined") delete TYRANO.kag.variable.tf.jdiffHours;
+      if(typeof TYRANO.kag.variable.tf.diffMinutes !== "undefined") delete TYRANO.kag.variable.tf.diffMinutes;
+      if(typeof TYRANO.kag.variable.tf.jdiffMinutes !== "undefined") delete TYRANO.kag.variable.tf.jdiffMinutes;
+      if(typeof TYRANO.kag.variable.tf.diffSeconds !== "undefined") delete TYRANO.kag.variable.tf.diffSeconds;
+      if(typeof TYRANO.kag.variable.tf.jdiffSeconds !== "undefined") delete TYRANO.kag.variable.tf.jdiffSeconds;
 
       // 次のタグへ
       this.kag.ftag.nextOrder();
@@ -501,7 +525,7 @@
    *********************************************************************************/
   const setDateTimeManager = (varobj, id, dt) => {
 
-    console.log("★★★★★setDateTimeManager");
+    // console.log("★★★★★setDateTimeManager");
 
     // 要素分割
     const { date, time, y, m, d, hr, min, sec } = divideDateTime(dt)
@@ -576,7 +600,7 @@
    *********************************************************************************/
   const addYears = (varobj, id, addYears) => {
 
-    console.log("★★★★★addYears");
+    // console.log("★★★★★addYears");
 
     // 日時管理オブジェクト取得
     target_dtmng = varobj.dtmngs.find(it => it.id == id);
@@ -612,7 +636,7 @@
    *********************************************************************************/
   const addMonths = (varobj, id, addMonths) => {
 
-    console.log("★★★★★addMonths");
+    // console.log("★★★★★addMonths");
 
     // 日時管理オブジェクト取得
     target_dtmng = varobj.dtmngs.find(it => it.id == id);
@@ -654,7 +678,7 @@
    *********************************************************************************/
   const addDays = (varobj, id, addDays) => {
 
-    console.log("★★★★★addDays");
+    // console.log("★★★★★addDays");
 
     // 日時管理オブジェクト取得
     target_dtmng = varobj.dtmngs.find(it => it.id == id);
@@ -690,7 +714,7 @@
    *********************************************************************************/
   const addHours = (varobj, id, addHours) => {
 
-    console.log("★★★★★addHours");
+    // console.log("★★★★★addHours");
 
     // 日時管理オブジェクト取得
     target_dtmng = varobj.dtmngs.find(it => it.id == id);
@@ -726,7 +750,7 @@
    *********************************************************************************/
   const addMinutes = (varobj, id, addMinutes) => {
 
-    console.log("★★★★★addMinutes");
+    // console.log("★★★★★addMinutes");
 
     // 日時管理オブジェクト取得
     target_dtmng = varobj.dtmngs.find(it => it.id == id);
@@ -762,7 +786,7 @@
    *********************************************************************************/
   const addSeconds = (varobj, id, addSeconds) => {
 
-    console.log("★★★★★addSeconds");
+    // console.log("★★★★★addSeconds");
 
     // 日時管理オブジェクト取得
     target_dtmng = varobj.dtmngs.find(it => it.id == id);
@@ -798,7 +822,7 @@
    *********************************************************************************/
   const pastDateTime = (dtmng1, dtmng2) => {
 
-    console.log("★★★★★pastDateTime");
+    // console.log("★★★★★pastDateTime");
 
     // 要素分割
     const { y: y1, m: m1, d: d1, hr: hr1, min: min1, sec: sec1 } = divideDateTime(dtmng1.datetime)
@@ -867,7 +891,7 @@
    *********************************************************************************/
   const diffDateTime = (dtmng1, dtmng2) => {
 
-    console.log("★★★★★diffDateTime");
+    // console.log("★★★★★diffDateTime");
 
     // 要素分割
     const { y: y1, m: m1, d: d1, hr: hr1, min: min1, sec: sec1 } = divideDateTime(dtmng1.datetime)
@@ -904,7 +928,7 @@
    *********************************************************************************/
   const divideDateTime = (dt) => {
 
-    console.log("★★★★★divideDateTime");
+    // console.log("★★★★★divideDateTime");
 
     // 要素分割
     const dtSplit = dt.split(" ");
@@ -942,7 +966,7 @@
    *********************************************************************************/
   const makeDateTimeString = (year, month, day, hour, minute, second) => {
 
-    console.log("★★★★★makeDateTimeString");
+    // console.log("★★★★★makeDateTimeString");
 
     // 戻り値の設定
     return (
@@ -966,7 +990,7 @@
    *********************************************************************************/
   const getNowDateTimeString = () => {
 
-    console.log("★★★★★getNowDateTimeString");
+    // console.log("★★★★★getNowDateTimeString");
 
     // 現在日時取得
     const date = new Date();
@@ -996,7 +1020,7 @@
    *********************************************************************************/
   const toDateString = (target) => {
 
-    console.log("★★★★★toDateString");
+    // console.log("★★★★★toDateString");
 
     // 対象日付が8文字の場合
     if(target.toString().length == 8){
@@ -1032,7 +1056,7 @@
    *********************************************************************************/
   const toTimeString = (target) => {
 
-    console.log("★★★★★toTimeString");
+    // console.log("★★★★★toTimeString");
 
     // 対象時刻が6文字の場合
     if(target.toString().length == 6){
@@ -1068,7 +1092,7 @@
    *********************************************************************************/
   const isDateTimeValid = (dt) => {
 
-    console.log("★★★★★isDateTimeValid");
+    // console.log("★★★★★isDateTimeValid");
 
     // 形式チェックが不正な場合は終了
     // ※正規表現によるチェック（9999/99/99 99:99:99形式）
@@ -1095,7 +1119,7 @@
    *********************************************************************************/
   const isDateValid = (year, month, day) => {
 
-    console.log("★★★★★isDateValid");
+    // console.log("★★★★★isDateValid");
 
     // 月が範囲外の場合は終了
     if (month < 1 || month > 12) return false;
@@ -1123,7 +1147,7 @@
    *********************************************************************************/
   const isTimeValid = (hour, minute, second) => {
 
-    console.log("★★★★★isTimeValid");
+    // console.log("★★★★★isTimeValid");
 
     // 戻り値の設定
     return (
@@ -1145,7 +1169,7 @@
    *********************************************************************************/
   const isNumeric = (target) => {
 
-    console.log("★★★★★isNumeric");
+    // console.log("★★★★★isNumeric");
 
     // 型チェック
     if(!target.match(/\d+/)){
@@ -1171,7 +1195,7 @@
    *********************************************************************************/
   const getVarobj = (scope) => {
 
-    console.log("★★★★★getVarobj");
+    // console.log("★★★★★getVarobj");
     
     // スコープがシステム変数か一時変数の場合
     if(scope == "sf" || scope == "tf"){
