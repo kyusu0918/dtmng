@@ -607,7 +607,7 @@ module.exports = class plugin_setting {
                 
                 header: function(e){
                     
-                    return (`${e.data.pm.id1} -> ${e.data.pm.id2}`) || "";
+                    return (`${e.data.pm.id1} - ${e.data.pm.id2}`) || "";
 
                 },
 
@@ -771,7 +771,7 @@ module.exports = class plugin_setting {
                 
                 header: function(e){
                     
-                    return (`${e.data.pm.id1} <-> ${e.data.pm.id2}`) || "";
+                    return (`${e.data.pm.id1} - ${e.data.pm.id2}`) || "";
 
                 },
 
